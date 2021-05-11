@@ -1,2 +1,2 @@
-# sunshine
+# Sunshine
 Sunshine Weather App
