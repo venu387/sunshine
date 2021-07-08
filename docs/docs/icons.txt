@@ -1,0 +1,122 @@
+200	Thunderstorm	Day		thunderstorm with light rain	  	11d
+201	Thunderstorm	Day		thunderstorm with rain	  			11d
+202	Thunderstorm	Day		thunderstorm with heavy rain	  	11d
+210	Thunderstorm	Day		light thunderstorm	  				11d
+211	Thunderstorm	Day		thunderstorm	  					11d
+212	Thunderstorm	Day		heavy thunderstorm	  				11d
+221	Thunderstorm	Day		ragged thunderstorm	  				11d
+230	Thunderstorm	Day		thunderstorm with light drizzle	  	11d
+231	Thunderstorm	Day		thunderstorm with drizzle	  		11d
+232	Thunderstorm	Day		thunderstorm with heavy drizzle	  	11d
+
+200	Thunderstorm	Night 	thunderstorm with light rain	  	11n
+201	Thunderstorm	Night 	thunderstorm with rain	  			11n
+202	Thunderstorm	Night 	thunderstorm with heavy rain	  	11n
+210	Thunderstorm	Night 	light thunderstorm	  				11n
+211	Thunderstorm	Night 	thunderstorm	  					11n
+212	Thunderstorm	Night 	heavy thunderstorm	  				11n
+221	Thunderstorm	Night 	ragged thunderstorm	  				11n
+230	Thunderstorm	Night 	thunderstorm with light drizzle	  	11n
+231	Thunderstorm	Night 	thunderstorm with drizzle	  		11n
+232	Thunderstorm	Night 	thunderstorm with heavy drizzle	  	11n
+
+300	Drizzle	Day		light intensity drizzle	  		09d
+301	Drizzle	Day		drizzle	  						09d
+302	Drizzle	Day		heavy intensity drizzle	  		09d
+310	Drizzle	Day		light intensity drizzle rain	09d
+311	Drizzle	Day		drizzle rain	  				09d
+312	Drizzle	Day		heavy intensity drizzle rain	09d
+313	Drizzle	Day		shower rain and drizzle	  		09d
+314	Drizzle	Day		heavy shower rain and drizzle	09d
+321	Drizzle	Day		shower drizzle	  				09d
+            		
+300	Drizzle	Night	light intensity drizzle	  		09n
+301	Drizzle	Night 	drizzle	  						09n
+302	Drizzle	Night 	heavy intensity drizzle	  		09n
+310	Drizzle	Night 	light intensity drizzle rain	09n
+311	Drizzle	Night 	drizzle rain	  				09n
+312	Drizzle	Night 	heavy intensity drizzle rain	09n
+313	Drizzle	Night 	shower rain and drizzle	  		09n
+314	Drizzle	Night 	heavy shower rain and drizzle	09n
+321	Drizzle	Night 	shower drizzle	  				09n
+             	
+500	Rain	Day		light rain	  					10d
+501	Rain	Day		moderate rain	  				10d
+502	Rain	Day		heavy intensity rain			10d
+503	Rain	Day		very heavy rain	  				10d
+504	Rain	Day		extreme rain	  				10d
+511	Rain	Day		freezing rain	  				13d
+520	Rain	Day		light intensity shower rain	  	09d
+521	Rain	Day		shower rain	  					09d
+522	Rain	Day		heavy intensity shower rain	  	09d
+531	Rain	Day		ragged shower rain	  			09d
+
+500	Rain	Night	light rain	  					10n
+501	Rain	Night	moderate rain	  				10n
+502	Rain	Night	heavy intensity rain			10n
+503	Rain	Night	very heavy rain	  				10n
+504	Rain	Night	extreme rain	  				10n
+511	Rain	Night	freezing rain	  				13n
+520	Rain	Night	light intensity shower rain	  	09n
+521	Rain	Night	shower rain	  					09n
+522	Rain	Night	heavy intensity shower rain	  	09n
+531	Rain	Night	tragged shower rain	  			09n
+
+600	Snow	Day 	light snow	  			13d
+601	Snow	Day 	Snow	  				13d
+602	Snow	Day 	Heavy snow	  			13d
+611	Snow	Day 	Sleet	  				13d
+612	Snow	Day 	Light shower sleet	  	13d
+613	Snow	Day 	Shower sleet	  		13d
+615	Snow	Day 	Light rain and snow	  	13d
+616	Snow	Day 	Rain and snow	  		13d
+620	Snow	Day 	Light shower snow	  	13d
+621	Snow	Day 	Shower snow	  			13d
+622	Snow	Day 	Heavy shower snow	  	13d
+
+600	Snow	Night 	light snow	  			13n
+601	Snow	Night 	Snow	  				13n
+602	Snow	Night 	Heavy snow	  			13n
+611	Snow	Night 	Sleet	  				13n
+612	Snow	Night 	Light shower sleet	  	13n
+613	Snow	Night 	Shower sleet	  		13n
+615	Snow	Night 	Light rain and snow	  	13n
+616	Snow	Night 	Rain and snow	  		13n
+620	Snow	Night 	Light shower snow	  	13n
+621	Snow	Night 	Shower snow	  			13n
+622	Snow	Night 	Heavy shower snow	  	13n
+
+701	Mist	Day 	mist	  			50d
+711	Smoke	Day 	Smoke	  			50d
+721	Haze	Day 	Haze	  			50d
+731	Dust	Day 	sand/ dust whirls	50d
+741	Fog		Day 	fog	  				50d
+751	Sand	Day 	sand	  			50d
+761	Dust	Day 	dust	  			50d
+762	Ash		Day 	volcanic ash  		50d
+771	Squall	Day 	squalls	  			50d
+781	Tornado	Day 	tornado	  			50d
+
+701	Mist	Night 	mist	  			50n
+711	Smoke	Night 	Smoke	  			50n
+721	Haze	Night 	Haze	  			50n
+731	Dust	Night 	sand/ dust whirls	50n
+741	Fog		Night 	fog	  				50n
+751	Sand	Night 	sand	  			50n
+761	Dust	Night 	dust	  			50n
+762	Ash		Night 	volcanic ash  		50n
+771	Squall	Night 	squalls	  			50n
+781	Tornado	Night 	tornado	  			50n
+
+800	Clear	Day 	clear sky	  01d
+800	Clear	Night 	clear sky	  01n
+
+801	Clouds	Day 	few clouds: 11-25%	  		02d
+802	Clouds	Day 	scattered clouds: 25-50%	03d
+803	Clouds	Day 	broken clouds: 51-84%	  	04d
+804	Clouds	Day 	overcast clouds: 85-100%	04d
+
+801	Clouds	Night 	few clouds: 11-25%	  		02n
+802	Clouds	Night 	scattered clouds: 25-50%	03n
+803	Clouds	Night 	broken clouds: 51-84%	  	04n
+804	Clouds	Night 	overcast clouds: 85-100%	04n
