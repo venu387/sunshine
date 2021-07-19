@@ -28,6 +28,9 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     justifyContent: 'center',
   },
+  image2: {
+    flex: 1,
+  },
 });
 
 export default App;
