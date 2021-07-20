@@ -1,24 +1,17 @@
 import React from 'react';
 import {ImageBackground} from 'react-native';
 import {StyleSheet, Text, View} from 'react-native';
+import {sharedCss} from '../assets/css/shared';
 
 const HomeScreen = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'transparent',
-      }}>
-      <Text
-        style={{
-          fontSize: 45,
-        }}>
-        This is a sample text that will be displayed on the Home screen!
-      </Text>
-    </View>
+    <ImageBackground
+      style={sharedCss.bgImage}
+      source={require('../assets/images/bg.jpg')}>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style={sharedCss.heading}>Home!</Text>
+      </View>
+    </ImageBackground>
   );
 };
-
 export default HomeScreen;

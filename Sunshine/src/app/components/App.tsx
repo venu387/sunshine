@@ -8,13 +8,15 @@ import {ScrollView} from 'react-native-gesture-handler';
 const App = () => {
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={require('../assets/images/bg.jpg')}
-        style={styles.image}>
-        <NavigationContainer>
-          <Nav></Nav>
-        </NavigationContainer>
-      </ImageBackground>
+      {
+        <ImageBackground
+          source={require('../assets/images/bg.jpg')}
+          style={styles.image}>
+          <NavigationContainer>
+            <Nav></Nav>
+          </NavigationContainer>
+        </ImageBackground>
+      }
     </View>
   );
 };
@@ -27,7 +29,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  image2: {},
 });
 
 export default App;
