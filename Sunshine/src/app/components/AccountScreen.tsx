@@ -1,12 +1,17 @@
 import React from 'react';
-import {View} from 'react-native';
+import {ImageBackground, View} from 'react-native';
 import {Text} from 'react-native';
+import {sharedCss} from '../assets/css/shared';
 
 const AccountScreen = () => {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Account!</Text>
-    </View>
+    <ImageBackground
+      style={sharedCss.bgImage}
+      source={require('../assets/images/bg.jpg')}>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style={sharedCss.heading}>Account!</Text>
+      </View>
+    </ImageBackground>
   );
 };
 

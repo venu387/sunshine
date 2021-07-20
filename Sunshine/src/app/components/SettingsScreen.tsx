@@ -1,11 +1,16 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {ImageBackground, Text, View} from 'react-native';
+import {sharedCss} from '../assets/css/shared';
 
 const SettingsScreen = () => {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings!</Text>
-    </View>
+    <ImageBackground
+      style={sharedCss.bgImage}
+      source={require('../assets/images/bg.jpg')}>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style={sharedCss.heading}>Settings!</Text>
+      </View>
+    </ImageBackground>
   );
 };
 

@@ -6,6 +6,7 @@ import SettingsScreen from '../SettingsScreen';
 import AccountScreen from '../AccountScreen';
 import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {NavigationContainer} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,13 +15,14 @@ const Nav = () => {
     <Tab.Navigator
       initialRouteName="Home"
       tabBarOptions={{
-        activeTintColor: 'white',
-        inactiveTintColor: 'black',
-        activeBackgroundColor: '#515151',
+        activeTintColor: 'rgba(255,255,255, 1)',
+        inactiveTintColor: 'rgba(0,0,0, 1)',
+        activeBackgroundColor: 'rgba(0,0,0, 0.9)',
+        keyboardHidesTabBar: false,
         style: {
           height: 80,
           elevation: 0,
-          backgroundColor: 'transparent',
+          backgroundColor: 'rgba(52,52,52,0.1)',
         },
         labelStyle: {
           fontSize: 16,
