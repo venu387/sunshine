@@ -10,7 +10,6 @@ Sunshine Weather App for Android and iOS. Uses an external weather API to retrie
 - [JDK 8](https://www.oracle.com/ca-en/java/technologies/javase/javase-jdk8-downloads.html)
 - [Android Studio (SDK and AVD Manager)](https://developer.android.com/studio)
 
----
 
 ## Environment Variables
 
