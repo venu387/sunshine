@@ -1,5 +1,5 @@
 # Sunshine
-
+[Sunshine](https://github.com/venu387/sunshine/actions/workflows/main.yml/badge.svg?branch=main)
 Sunshine Weather App for Android and iOS. Uses an external weather API to retrieve the data.
 
 ## Prerequisites
