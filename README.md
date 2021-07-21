@@ -16,7 +16,7 @@ Sunshine Weather App for Android and iOS. Uses an external weather API to retrie
 ## Environment Variables
 
 - 'JAVA_HOME' - New Environment Variable pointing to Java Sdk folder (Ex: C:\Program Files\Java\jdk1.8.x_xx)
-- 'ANDROID_HOME' - New Environment Variable pointing to Android Sdk folder (Ex: C:\Users\gowth\AppData\Local\Android\Sdk)
+- 'ANDROID_HOME' - New Environment Variable pointing to Android Sdk folder (Ex: C:\Users\<USERNAME>\AppData\Local\Android\Sdk)
 
 ## Entries to `Path` Environment Variable
 
