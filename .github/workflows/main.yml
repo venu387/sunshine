@@ -39,7 +39,7 @@ jobs:
       # Install app dependencies using the runners shell
       - name: Install Dependencies
         run: |
-          cd .\Sunshine
+          cd Sunshine
           npm install
 
       # Runs a set of commands using the runners shell
