@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {ImageBackground, View} from 'react-native';
-import {Text} from 'react-native';
+import {ImageBackground, Text, View} from 'react-native';
 import {sharedCss} from '../assets/css/shared';
 
-export default class MyLocationsScreen extends Component {
+export default class LocationsScreen extends Component {
   render() {
     return (
       <ImageBackground
