@@ -1,22 +1,14 @@
 import React, {useEffect} from 'react';
-import {View, ActivityIndicator} from 'react-native';
-import {
-  NavigationContainer,
-  DefaultTheme as NavigationDefaultTheme,
-  DarkTheme as NavigationDarkTheme,
-} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
-import {
-  Provider as PaperProvider,
-  DefaultTheme as PaperDefaultTheme,
-  DarkTheme as PaperDarkTheme,
-} from 'react-native-paper';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 import {DrawerContent} from './drawerComponents/DrawerContent';
 import MainTabScreen from './MainTabScreen';
 import {AuthContext} from './Context';
 import AsyncStorage from '@react-native-community/async-storage';
+import {CustomDarkTheme, CustomDefaultTheme} from './ThemeProvider';
 
 const Drawer = createDrawerNavigator();
 
@@ -30,29 +22,6 @@ const App = () => {
     isLoading: true,
     userName: null,
     userToken: null,
-  };
-
-  const CustomDefaultTheme = {
-    ...NavigationDefaultTheme,
-    ...PaperDefaultTheme,
-    colors: {
-      ...NavigationDefaultTheme.colors,
-      ...PaperDefaultTheme.colors,
-      background: '#ffffff',
-      text: '#000000',
-      primary: '#ededed',
-    },
-  };
-
-  const CustomDarkTheme = {
-    ...NavigationDarkTheme,
-    ...PaperDarkTheme,
-    colors: {
-      ...NavigationDarkTheme.colors,
-      ...PaperDarkTheme.colors,
-      background: '#000000',
-      text: '#ffffff',
-    },
   };
 
   const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
@@ -127,6 +96,7 @@ const App = () => {
       toggleTheme: () => {
         setIsDarkTheme(isDarkTheme => !isDarkTheme);
       },
+      isDarkTheme: isDarkTheme,
     }),
     [],
   );
