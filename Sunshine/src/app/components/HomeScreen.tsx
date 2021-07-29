@@ -1,18 +1,20 @@
 import React, {Component} from 'react';
-import {ImageBackground} from 'react-native';
+import {Alert, ImageBackground} from 'react-native';
 import {StyleSheet, Text, View} from 'react-native';
 import {sharedCss} from '../assets/css/shared';
+import {AuthContext} from './Context';
 
-export default class HomeScreen extends Component {
-  render() {
-    return (
-      <ImageBackground
-        style={sharedCss.bgImage}
-        source={require('../assets/images/bg.jpg')}>
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={sharedCss.heading}>Home!</Text>
-        </View>
-      </ImageBackground>
-    );
-  }
+export function HomeScreen(props: any) {
+  const {isDarkTheme} = React.useContext(AuthContext);
+  const image = isDarkTheme
+    ? require('../assets/images/bg-light.jpg')
+    : require('../assets/images/bg-light.jpg');
+  return (
+    <ImageBackground style={sharedCss.bgImage} source={image}>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style={sharedCss.heading}>Home!</Text>
+      </View>
+    </ImageBackground>
+  );
 }
+export default HomeScreen;

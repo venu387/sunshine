@@ -9,7 +9,6 @@ const HomeStack = createStackNavigator();
 const HomeStackScreen = ({navigation}: any) => (
   <HomeStack.Navigator
     screenOptions={{
-      headerTintColor: '#000',
       headerTransparent: true,
       headerTitleStyle: {
         display: 'none',
@@ -19,7 +18,6 @@ const HomeStackScreen = ({navigation}: any) => (
           name="ios-menu"
           size={32}
           style={{
-            opacity: 0.75,
             marginLeft: 15,
             marginTop: 5,
           }}
