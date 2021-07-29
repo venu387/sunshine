@@ -27,10 +27,10 @@ export function DrawerContent(props: any) {
       <DrawerContentScrollView {...props}>
         <View style={styles.drawerContent}>
           <View style={styles.userInfoSection}>
-            <View style={{flexDirection: 'row', marginTop: 15}}>
+            <View style={{flexDirection: 'row', marginTop: 20}}>
               <Avatar.Image
                 source={require('../../assets/images/logo.png')}
-                size={50}
+                size={45}
               />
               <View style={{marginLeft: 15, flexDirection: 'column'}}>
                 <Title style={styles.title}>Sunshine</Title>
@@ -114,8 +114,8 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   title: {
-    fontSize: 30,
-    marginTop: 12,
+    fontSize: 26,
+    marginTop: 8,
   },
   caption: {
     fontSize: 14,

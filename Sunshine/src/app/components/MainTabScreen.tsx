@@ -13,13 +13,12 @@ const Tab = createMaterialBottomTabNavigator();
 class MainTabScreen extends React.Component {
   render() {
     return (
-      <Tab.Navigator initialRouteName="Home" activeColor="#fff">
+      <Tab.Navigator initialRouteName="Home" {...this.props}>
         <Tab.Screen
           name="Home"
           component={HomeStackScreen}
           options={{
             tabBarLabel: 'Home',
-            tabBarColor: '#515151',
             tabBarIcon: ({color}: any) => (
               <Icon name="ios-home" color={color} size={25} />
             ),
@@ -30,7 +29,6 @@ class MainTabScreen extends React.Component {
           component={LocationsStackScreen}
           options={{
             tabBarLabel: 'My Locations',
-            tabBarColor: '#515151',
             tabBarIcon: ({color}: any) => (
               <Icon name="ios-location" color={color} size={25} />
             ),
@@ -41,7 +39,6 @@ class MainTabScreen extends React.Component {
           component={SettingsStackScreen}
           options={{
             tabBarLabel: 'Settings',
-            tabBarColor: '#515151',
             tabBarIcon: ({color}: any) => (
               <Icon name="ios-settings" color={color} size={25} />
             ),
@@ -52,7 +49,6 @@ class MainTabScreen extends React.Component {
           component={AccountStackScreen}
           options={{
             tabBarLabel: 'Account',
-            tabBarColor: '#515151',
             tabBarIcon: ({color}: any) => (
               <Icon name="ios-person" color={color} size={25} />
             ),

@@ -39,7 +39,8 @@ const App = () => {
       ...NavigationDefaultTheme.colors,
       ...PaperDefaultTheme.colors,
       background: '#ffffff',
-      text: '#333333',
+      text: '#000000',
+      primary: '#ededed',
     },
   };
 
@@ -49,7 +50,7 @@ const App = () => {
     colors: {
       ...NavigationDarkTheme.colors,
       ...PaperDarkTheme.colors,
-      background: '#333333',
+      background: '#000000',
       text: '#ffffff',
     },
   };
