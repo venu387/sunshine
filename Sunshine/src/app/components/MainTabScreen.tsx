@@ -3,10 +3,10 @@ import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import AccountStackScreen from './drawerComponents/AccountDrawer';
 import HomeStackScreen from './drawerComponents/HomeDrawer';
 import LocationsStackScreen from './drawerComponents/LocationsDrawer';
 import SettingsStackScreen from './drawerComponents/SettingsDrawer';
-import AccountStackScreen from './drawerComponents/AccountDrawer';
 
 const Tab = createMaterialBottomTabNavigator();
 
