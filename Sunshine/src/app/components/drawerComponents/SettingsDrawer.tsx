@@ -28,7 +28,7 @@ const SettingsStackScreen = ({navigation}: any) => (
           onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
     }}>
-    <SettingsStack.Screen name="Home" component={SettingsScreen} />
+    <SettingsStack.Screen name="Settings" component={SettingsScreen} />
   </SettingsStack.Navigator>
 );
 

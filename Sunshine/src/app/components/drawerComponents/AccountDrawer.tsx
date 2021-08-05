@@ -28,7 +28,7 @@ const AccountStackScreen = ({navigation}: any) => (
           onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
     }}>
-    <AccountStack.Screen name="Home" component={AccountScreen} />
+    <AccountStack.Screen name="Account" component={AccountScreen} />
   </AccountStack.Navigator>
 );
 

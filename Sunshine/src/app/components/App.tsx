@@ -96,6 +96,9 @@ const App = () => {
       toggleTheme: () => {
         setIsDarkTheme(isDarkTheme => !isDarkTheme);
       },
+      isUserLoggedIn: () => {
+        return false;
+      },
       isDarkTheme: isDarkTheme,
     }),
     [],

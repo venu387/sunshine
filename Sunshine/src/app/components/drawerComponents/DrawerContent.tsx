@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Alert} from 'react-native';
 import {
   useTheme,
   Avatar,
@@ -12,15 +12,14 @@ import {
   Switch,
 } from 'react-native-paper';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
-
 import Icon from 'react-native-vector-icons/Ionicons';
-
 import {AuthContext} from '../Context';
 
 export function DrawerContent(props: any) {
   const paperTheme = useTheme();
 
-  const {signOut, toggleTheme} = React.useContext(AuthContext);
+  const {signOut, signIn, toggleTheme, isUserLoggedIn} =
+    React.useContext(AuthContext);
 
   return (
     <View style={{flex: 1}}>
@@ -92,15 +91,27 @@ export function DrawerContent(props: any) {
         </View>
       </DrawerContentScrollView>
       <Drawer.Section style={styles.bottomDrawerSection}>
-        <DrawerItem
-          icon={({color, size}) => (
-            <Icon name="ios-exit" color={color} size={size} />
-          )}
-          label="Sign Out"
-          onPress={() => {
-            signOut();
-          }}
-        />
+        {isUserLoggedIn() ? (
+          <DrawerItem
+            icon={({color, size}) => (
+              <Icon name="ios-exit" color={color} size={size} />
+            )}
+            label="Sign Out"
+            onPress={() => {
+              signOut();
+            }}
+          />
+        ) : (
+          <DrawerItem
+            icon={({color, size}) => (
+              <Icon name="ios-enter" color={color} size={size} />
+            )}
+            label="Sign In"
+            onPress={() => {
+              props.navigation.navigate('Login');
+            }}
+          />
+        )}
       </Drawer.Section>
     </View>
   );

@@ -28,7 +28,7 @@ const LocationsStackScreen = ({navigation}: any) => (
           onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
     }}>
-    <LocationsStack.Screen name="Home" component={LocationsScreen} />
+    <LocationsStack.Screen name="Locations" component={LocationsScreen} />
   </LocationsStack.Navigator>
 );
 

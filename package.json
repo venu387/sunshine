@@ -1,0 +1,11 @@
+{
+  "name": "sunshineap",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "install": "(cd ./Sunshine && npm i) && (cd ../SunshineApi && npm i)",
+    "i": "npm run install",
+    "start": "(cd ./Sunshine && npm run start) && (cd ../SunshineApi && npm run start)",
+    "android": "(cd ./Sunshine && npm run android) && (cd ../SunshineApi && npm run start)"
+  }
+}
