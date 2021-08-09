@@ -13,7 +13,7 @@ import {
 } from 'react-native-paper';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {AuthContext} from '../Context';
+import {AuthContext} from './Context';
 
 export function DrawerContent(props: any) {
   const paperTheme = useTheme();
@@ -28,7 +28,7 @@ export function DrawerContent(props: any) {
           <View style={styles.userInfoSection}>
             <View style={{flexDirection: 'row', marginTop: 20}}>
               <Avatar.Image
-                source={require('../../assets/images/logo.png')}
+                source={require('../assets/images/logo.png')}
                 size={45}
               />
               <View style={{marginLeft: 15, flexDirection: 'column'}}>

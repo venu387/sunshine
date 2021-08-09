@@ -1,22 +1,23 @@
 import React from 'react';
-
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import Icon from 'react-native-vector-icons/Ionicons';
 
-import AccountStackScreen from './drawerComponents/AccountDrawer';
-import HomeStackScreen from './drawerComponents/HomeDrawer';
-import LocationsStackScreen from './drawerComponents/LocationsDrawer';
-import SettingsStackScreen from './drawerComponents/SettingsDrawer';
+import {
+  HomeStackNavigator,
+  AccountStackNavigator,
+  SettingsStackNavigator,
+  MyLocationsStackNavigator,
+} from './StackNavigator';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Tab = createMaterialBottomTabNavigator();
 
-class MainTabScreen extends React.Component {
+class BottomTabNavigator extends React.Component {
   render() {
     return (
       <Tab.Navigator initialRouteName="Home" {...this.props}>
         <Tab.Screen
           name="Home"
-          component={HomeStackScreen}
+          component={HomeStackNavigator}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({color}: any) => (
@@ -25,8 +26,8 @@ class MainTabScreen extends React.Component {
           }}
         />
         <Tab.Screen
-          name="MyLocations"
-          component={LocationsStackScreen}
+          name="My Locations"
+          component={MyLocationsStackNavigator}
           options={{
             tabBarLabel: 'My Locations',
             tabBarIcon: ({color}: any) => (
@@ -36,7 +37,7 @@ class MainTabScreen extends React.Component {
         />
         <Tab.Screen
           name="Settings"
-          component={SettingsStackScreen}
+          component={SettingsStackNavigator}
           options={{
             tabBarLabel: 'Settings',
             tabBarIcon: ({color}: any) => (
@@ -46,7 +47,7 @@ class MainTabScreen extends React.Component {
         />
         <Tab.Screen
           name="Account"
-          component={AccountStackScreen}
+          component={AccountStackNavigator}
           options={{
             tabBarLabel: 'Account',
             tabBarIcon: ({color}: any) => (
@@ -59,4 +60,4 @@ class MainTabScreen extends React.Component {
   }
 }
 
-export default MainTabScreen;
+export default BottomTabNavigator;
