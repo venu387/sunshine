@@ -1,5 +1,8 @@
 import express, { NextFunction, Request, Response } from "express";
-import { getWeather } from "../controllers/open-api";
+import {
+  getWeatherByCityId,
+  getWeatherByCityName,
+} from "../controllers/open-api";
 
 var openApiRouter = express();
 
@@ -13,7 +16,14 @@ openApiRouter.get(
 openApiRouter.get(
   "/getByCityId/:cityId",
   function (req: Request, res: Response, next: NextFunction) {
-    const response = getWeather(req.params.cityId);
+    const response = getWeatherByCityId(req.params.cityId);
+    res.json({ response });
+  }
+);
+openApiRouter.get(
+  "/getByCityName/:cityDetails",
+  function (req: Request, res: Response, next: NextFunction) {
+    const response = getWeatherByCityName(req.params.cityDetails);
     res.json({ response });
   }
 );

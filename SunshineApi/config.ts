@@ -1,36 +1,30 @@
-const openApiUrl =
-  "https://api.openweathermap.org/data/2.5/weather?appid=fde8a7986eb63a51eab11d986c11a79d&";
+const openApiUrl = new URL(
+  "https://api.openweathermap.org/data/2.5/weather?appid=fde8a7986eb63a51eab11d986c11a79d"
+);
 
 export class OpenApiUrlProvider {
   static GetCurrentWeatherByCityId(cityId: string) {
     const queryParams = { id: cityId };
-    return new URL(encodeQueryData(queryParams), openApiUrl).href;
+    return getOpenWeatherApiUrl(queryParams);
   }
-  static GetCurrentWeatherByCityName(cityName: string) {
-    const queryParams = { q: cityName };
-    return new URL(encodeQueryData(queryParams), openApiUrl).href;
-  }
-  static GetCurrentWeatherByCityNameAndCountry(
-    cityName: string,
-    stateCode: string,
-    countryCode: string
-  ) {
-    const queryParams = { q: `${cityName},${stateCode},${countryCode}` };
-    return new URL(encodeQueryData(queryParams), openApiUrl).href;
+  static GetCurrentWeatherByCityNameAndCountry(cityDetails: string) {
+    const queryParams = { q: `${cityDetails}` };
+    return getOpenWeatherApiUrl(queryParams);
   }
   static GetCurrentWeatherByCoordinates(lat: string, lon: string) {
     const queryParams = { lat: lat, lon: lon };
-    return new URL(encodeQueryData(queryParams), openApiUrl).href;
+    return getOpenWeatherApiUrl(queryParams);
   }
   static GetCurrentWeatherByZipCode(zipCode: string, countryCode: string) {
     const queryParams = { zip: `${zipCode},${countryCode}` };
-    return new URL(encodeQueryData(queryParams), openApiUrl).href;
+    return getOpenWeatherApiUrl(queryParams);
   }
 }
 
-function encodeQueryData(data: any) {
-  const ret = [];
-  for (let d in data)
-    ret.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
-  return ret.join("&");
+function getOpenWeatherApiUrl(data: any) {
+  var url = new URL(openApiUrl.href);
+  for (let d in data) {
+    url.searchParams.append(d, data[d]);
+  }
+  return url.href;
 }

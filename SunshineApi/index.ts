@@ -3,6 +3,13 @@ import { openApiRouter } from "./routers/open-api-router";
 
 const app = express();
 
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+
 app.use("/openapi", openApiRouter);
 
 const port = 3000;
