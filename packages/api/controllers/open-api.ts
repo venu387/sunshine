@@ -1,39 +1,52 @@
 import { OpenApiUrlProvider } from "../config";
 import axios from "axios";
+import { Error } from "../types/errors";
+import { OpenWeather } from "../types/openWeather";
+import { CityInfo, Data, Weather } from "../models/weather";
 
-const getResponse = (url: string) => {
+async function getResponse(url: string): Promise<any> {
   // axios call
-  axios
+  return await axios
     .get(url)
-    .then(function (response: any) {
-      // handle success
-      console.log(response);
-      return response;
+    .then((response) => {
+      console.log(response.data);
+      var data = response.data as OpenWeather;
+      return new Weather({
+        cityName: data.name,
+        stateCode: "",
+        countryCode: data.sys?.country,
+        cityId: data.id,
+        cityInfo: new CityInfo({
+          country: data.sys?.country,
+          id: data.sys?.id,
+          type: data.sys?.type,
+          sunrise: new Date(data.sys?.sunrise!),
+          sunset: new Date(data.sys?.sunset!),
+        }),
+        clouds: data.clouds?.all,
+      });
     })
-    .catch(function (error: any) {
-      // handle error
+    .catch((error) => {
       console.log(error);
-    })
-    .then(function () {
-      // always executed
+      return new Error({ message: error.message });
     });
-};
+}
 
-const getWeatherByCityId = (cityId: string) => {
+const getWeatherByCityId = async (cityId: string) => {
   /**
    * Get weather data for a city ID from OpenWeather API
    */
   const url = OpenApiUrlProvider.GetCurrentWeatherByCityId(cityId);
-  return getResponse(url);
+  return await getResponse(url);
 };
 
-const getWeatherByCityName = (cityDetails: string) => {
+const getWeatherByCityName = async (cityDetails: string) => {
   /**
    * Get weather data for a city name from OpenWeather API
    */
   const url =
     OpenApiUrlProvider.GetCurrentWeatherByCityNameAndCountry(cityDetails);
-  return getResponse(url);
+  return await getResponse(url);
 };
 
 export { getWeatherByCityId, getWeatherByCityName };
