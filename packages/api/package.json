@@ -1,11 +1,11 @@
 {
-  "name": "sunshineapi",
+  "name": "@sunshine/api",
   "version": "1.0.0",
   "description": "Node Js API for getting weather data",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "start": "npx tsc && node dist/index.js",
-    "dev": "npx tsc && nodemon dist/index.js",
+    "start": "ts-node src/index.ts",
+    "dev": "ts-node-dev src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Venu S Reddy",
@@ -14,11 +14,13 @@
     "@automapper/classes": "^6.0.0",
     "@nartc/automapper": "^7.0.4",
     "axios": "^0.21.1",
+    "ts-node": "^10.2.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
     "typescript": "^4.3.5",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "ts-node-dev": "^1.1.8"
   }
 }

@@ -1,5 +1,3 @@
-import { MapInitializeFunction } from "@nartc/automapper";
-
 export class Weather {
   constructor(props: Partial<Weather>) {
     Object.assign(this, props);

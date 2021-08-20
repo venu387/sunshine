@@ -2,7 +2,7 @@ import { OpenApiUrlProvider } from "../config";
 import axios from "axios";
 import { Error } from "../types/errors";
 import { OpenWeather } from "../types/openWeather";
-import { CityInfo, Data, Weather } from "../models/weather";
+import { CityInfo, Weather } from "../models/weather";
 
 async function getResponse(url: string): Promise<any> {
   // axios call
