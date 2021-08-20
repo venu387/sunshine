@@ -15,16 +15,16 @@ openApiRouter.get(
 );
 openApiRouter.get(
   "/getByCityId/:cityId",
-  function (req: Request, res: Response, next: NextFunction) {
-    const response = getWeatherByCityId(req.params.cityId);
-    res.json({ response });
+  async function (req: Request, res: Response, next: NextFunction) {
+    const response = await getWeatherByCityId(req.params.cityId);
+    res.json(response);
   }
 );
 openApiRouter.get(
   "/getByCityName/:cityDetails",
-  function (req: Request, res: Response, next: NextFunction) {
-    const response = getWeatherByCityName(req.params.cityDetails);
-    res.json({ response });
+  async function (req: Request, res: Response, next: NextFunction) {
+    const response = await getWeatherByCityName(req.params.cityDetails);
+    res.json(response);
   }
 );
 

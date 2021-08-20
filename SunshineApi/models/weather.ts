@@ -1,45 +1,81 @@
-export interface Weather {
-  coord: Coord;
-  weather?: WeatherEntity[] | null;
-  base: string;
-  main: Main;
-  wind: Wind;
-  clouds: Clouds;
-  dt: number;
-  sys: Sys;
-  id: number;
-  name: string;
-  cod: number;
+import { MapInitializeFunction } from "@nartc/automapper";
+
+export class Weather {
+  constructor(props: Partial<Weather>) {
+    Object.assign(this, props);
+  }
+  cityName: string = "";
+  stateCode: string = "";
+  countryCode: string = "";
+  lon: string = "";
+  lat: string = "";
+  data: Data[] = [];
+  main?: Main;
+  visibility: number = 0;
+  wind?: Wind;
+  rain?: Rain;
+  snow?: Snow;
+  clouds: number = 0;
+  date?: Date;
+  cityInfo?: CityInfo;
+  timezone: number = 0;
+  cityId: number = 0;
+  name: string = "";
 }
-export interface Coord {
-  lon: number;
-  lat: number;
+
+export class Data {
+  constructor(props: Partial<Data>) {
+    Object.assign(this, props);
+  }
+  main: string = "";
+  description: string = "";
+  iconName: string = "";
 }
-export interface WeatherEntity {
-  id: number;
-  main: string;
-  description: string;
-  icon: string;
+
+export class Main {
+  constructor(props: Partial<Main>) {
+    Object.assign(this, props);
+  }
+  temp: number = 0;
+  feelsLike: number = 0;
+  tempMin: number = 0;
+  tempMax: number = 0;
+  pressure: number = 0;
+  humidity: number = 0;
 }
-export interface Main {
-  temp: number;
-  pressure: number;
-  humidity: number;
-  temp_min: number;
-  temp_max: number;
+
+export class Wind {
+  constructor(props: Partial<Wind>) {
+    Object.assign(this, props);
+  }
+  speed: number = 0;
+  deg: number = 0;
+  gust: number = 0;
 }
-export interface Wind {
-  speed: number;
-  deg: number;
+
+export class Rain {
+  constructor(props: Partial<Rain>) {
+    Object.assign(this, props);
+  }
+  oneHour: number = 0;
+  threeHour: number = 0;
 }
-export interface Clouds {
-  all: number;
+
+export class Snow {
+  constructor(props: Partial<Snow>) {
+    Object.assign(this, props);
+  }
+  oneHour: number = 0;
+  threeHour: number = 0;
 }
-export interface Sys {
-  type: number;
-  id: number;
-  message: number;
-  country: string;
-  sunrise: number;
-  sunset: number;
+
+export class CityInfo {
+  constructor(props: Partial<CityInfo>) {
+    Object.assign(this, props);
+  }
+  type: number = 0;
+  id: number = 0;
+  country: string = "";
+  sunrise?: Date;
+  sunset?: Date;
 }
