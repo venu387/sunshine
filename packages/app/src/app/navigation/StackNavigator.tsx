@@ -52,11 +52,38 @@ const HomeStackNavigator = ({navigation}: any) => {
         name="7Day"
         component={SevenDay}
         options={{
-          headerTitle: 'Back',
-          headerBackTitle: 'Back',
+          headerLeft: () => (
+            <Icon.Button
+              name="ios-arrow-back"
+              size={32}
+              style={{
+                marginLeft: 15,
+                marginTop: 5,
+              }}
+              color="#000"
+              backgroundColor="transparent"
+              onPress={() => navigation.goBack()}></Icon.Button>
+          ),
         }}
       />
-      <Stack.Screen name="12Hour" component={TwelveHour} />
+      <Stack.Screen
+        name="12Hour"
+        component={TwelveHour}
+        options={{
+          headerLeft: () => (
+            <Icon.Button
+              name="ios-arrow-back"
+              size={32}
+              style={{
+                marginLeft: 15,
+                marginTop: 5,
+              }}
+              color="#000"
+              backgroundColor="transparent"
+              onPress={() => navigation.goBack()}></Icon.Button>
+          ),
+        }}
+      />
     </Stack.Navigator>
   );
 };
