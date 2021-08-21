@@ -92,7 +92,24 @@ const MyLocationsStackNavigator = ({navigation}: any) => {
   return (
     <Stack.Navigator screenOptions={screenOptions(navigation)}>
       <Stack.Screen name="MyLocations" component={MyLocations} />
-      <Stack.Screen name="AddLocation" component={AddLocation} />
+      <Stack.Screen
+        name="AddLocation"
+        component={AddLocation}
+        options={{
+          headerLeft: () => (
+            <Icon.Button
+              name="ios-arrow-back"
+              size={32}
+              style={{
+                marginLeft: 15,
+                marginTop: 5,
+              }}
+              color="#000"
+              backgroundColor="transparent"
+              onPress={() => navigation.navigate('MyLocations')}></Icon.Button>
+          ),
+        }}
+      />
     </Stack.Navigator>
   );
 };
