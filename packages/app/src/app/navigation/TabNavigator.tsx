@@ -14,7 +14,7 @@ const Tab = createMaterialBottomTabNavigator();
 class BottomTabNavigator extends React.Component {
   render() {
     return (
-      <Tab.Navigator initialRouteName="Home" {...this.props}>
+      <Tab.Navigator initialRouteName="Home">
         <Tab.Screen
           name="Home"
           component={HomeStackNavigator}

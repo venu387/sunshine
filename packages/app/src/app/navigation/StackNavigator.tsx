@@ -13,7 +13,10 @@ import Account from '../screens/account/Account';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Alert, Button} from 'react-native';
 
-const Stack = createStackNavigator();
+const HomeStack = createStackNavigator();
+const LocationsStack = createStackNavigator();
+const SettingsStack = createStackNavigator();
+const AccountStack = createStackNavigator();
 
 const screenOptionStyle = {
   headerStyle: {
@@ -44,11 +47,11 @@ const screenOptions = function (navigation: any): StackNavigationOptions {
     ),
   };
 };
-const HomeStackNavigator = ({navigation}: any) => {
+const HomeStackNavigator = (props: any) => {
   return (
-    <Stack.Navigator screenOptions={screenOptions(navigation)}>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen
+    <HomeStack.Navigator screenOptions={screenOptions(props.navigation)}>
+      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen
         name="7Day"
         component={SevenDay}
         options={{
@@ -62,11 +65,11 @@ const HomeStackNavigator = ({navigation}: any) => {
               }}
               color="#000"
               backgroundColor="transparent"
-              onPress={() => navigation.goBack()}></Icon.Button>
+              onPress={() => props.navigation.goBack()}></Icon.Button>
           ),
         }}
       />
-      <Stack.Screen
+      <HomeStack.Screen
         name="12Hour"
         component={TwelveHour}
         options={{
@@ -80,19 +83,19 @@ const HomeStackNavigator = ({navigation}: any) => {
               }}
               color="#000"
               backgroundColor="transparent"
-              onPress={() => navigation.goBack()}></Icon.Button>
+              onPress={() => props.navigation.goBack()}></Icon.Button>
           ),
         }}
       />
-    </Stack.Navigator>
+    </HomeStack.Navigator>
   );
 };
 
-const MyLocationsStackNavigator = ({navigation}: any) => {
+const MyLocationsStackNavigator = (props: any) => {
   return (
-    <Stack.Navigator screenOptions={screenOptions(navigation)}>
-      <Stack.Screen name="MyLocations" component={MyLocations} />
-      <Stack.Screen
+    <LocationsStack.Navigator screenOptions={screenOptions(props.navigation)}>
+      <LocationsStack.Screen name="MyLocations" component={MyLocations} />
+      <LocationsStack.Screen
         name="AddLocation"
         component={AddLocation}
         options={{
@@ -106,27 +109,27 @@ const MyLocationsStackNavigator = ({navigation}: any) => {
               }}
               color="#000"
               backgroundColor="transparent"
-              onPress={() => navigation.navigate('MyLocations')}></Icon.Button>
+              onPress={() => props.navigation.goBack()}></Icon.Button>
           ),
         }}
       />
-    </Stack.Navigator>
+    </LocationsStack.Navigator>
   );
 };
 
-const SettingsStackNavigator = ({navigation}: any) => {
+const SettingsStackNavigator = (props: any) => {
   return (
-    <Stack.Navigator screenOptions={screenOptions(navigation)}>
-      <Stack.Screen name="Settings" component={Settings} />
-    </Stack.Navigator>
+    <SettingsStack.Navigator screenOptions={screenOptions(props.navigation)}>
+      <SettingsStack.Screen name="Settings" component={Settings} />
+    </SettingsStack.Navigator>
   );
 };
 
-const AccountStackNavigator = ({navigation}: any) => {
+const AccountStackNavigator = (props: any) => {
   return (
-    <Stack.Navigator screenOptions={screenOptions(navigation)}>
-      <Stack.Screen name="Account" component={Account} />
-    </Stack.Navigator>
+    <AccountStack.Navigator screenOptions={screenOptions(props.navigation)}>
+      <AccountStack.Screen name="Account" component={Account} />
+    </AccountStack.Navigator>
   );
 };
 
