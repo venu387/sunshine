@@ -1,0 +1,10 @@
+{
+  "name": "@sunshine/core",
+  "version": "1.0.0",
+  "description": "Core project used across project",
+  "scripts": {},
+  "author": "Venu S Reddy",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {}
+}

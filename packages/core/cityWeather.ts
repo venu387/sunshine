@@ -14,7 +14,7 @@ export class CityWeather {
   date?: Date;
   timezone: number = 0;
   cityId: number = 0;
-  name: string = '';
+  name: string = "";
 }
 
 export class CityDetails {
@@ -22,13 +22,12 @@ export class CityDetails {
     Object.assign(this, props);
   }
   id: number = 0;
-  cityName: string = '';
-  stateCode: string = '';
-  countryCode: string = '';
-  lon: string = '';
-  lat: string = '';
+  name: string = "";
+  stateCode: string = "";
+  lon: number = 0;
+  lat: number = 0;
   type: number = 0;
-  country: string = '';
+  country: string = "";
   sunrise?: Date;
   sunset?: Date;
 }
@@ -37,9 +36,9 @@ export class WeatherData {
   constructor(props: Partial<WeatherData>) {
     Object.assign(this, props);
   }
-  main: string = '';
-  description: string = '';
-  iconName: string = '';
+  main: string = "";
+  description: string = "";
+  iconName: string = "";
   temp: number = 0;
   feelsLike: number = 0;
   tempMin: number = 0;
