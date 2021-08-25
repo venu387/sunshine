@@ -21,6 +21,12 @@ export function DrawerContent(props: any) {
   const {signOut, signIn, toggleTheme, isUserLoggedIn} =
     React.useContext(AuthContext);
 
+  const locations = [
+    {id: 1, name: 'Location 1'},
+    {id: 2, name: 'Location 2'},
+    {id: 3, name: 'Location 3'},
+    {id: 4, name: 'Location 4'},
+  ];
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView {...props}>
@@ -38,42 +44,17 @@ export function DrawerContent(props: any) {
           </View>
 
           <Drawer.Section style={styles.drawerSection}>
-            <DrawerItem
-              icon={({color, size}) => (
-                <Icon name="ios-home" color={color} size={size} />
-              )}
-              label="Home"
-              onPress={() => {
-                props.navigation.navigate('Home');
-              }}
-            />
-            <DrawerItem
-              icon={({color, size}) => (
-                <Icon name="ios-person" color={color} size={size} />
-              )}
-              label="Account"
-              onPress={() => {
-                props.navigation.navigate('Account');
-              }}
-            />
-            <DrawerItem
-              icon={({color, size}) => (
-                <Icon name="ios-settings" color={color} size={size} />
-              )}
-              label="Settings"
-              onPress={() => {
-                props.navigation.navigate('Settings');
-              }}
-            />
-            <DrawerItem
-              icon={({color, size}) => (
-                <Icon name="ios-location" color={color} size={size} />
-              )}
-              label="My Locations"
-              onPress={() => {
-                props.navigation.navigate('MyLocations');
-              }}
-            />
+            {locations.map(l => {
+              return (
+                <DrawerItem
+                  label={l.name}
+                  key={l.id}
+                  onPress={() => {
+                    props.navigation.navigate('Home', {name: l.name});
+                  }}
+                />
+              );
+            })}
           </Drawer.Section>
           <Drawer.Section title="Preferences">
             <TouchableRipple

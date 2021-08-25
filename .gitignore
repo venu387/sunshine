@@ -5,6 +5,10 @@ dist/
 #
 .DS_Store
 
+# VSCode
+
+.vscode/
+
 # Xcode
 #
 build/

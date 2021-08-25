@@ -5,15 +5,22 @@ import {Button} from 'react-native';
 import {sharedCss} from '../../assets/css/shared';
 import {AuthContext} from '../Context';
 
-export function Home({navigation}: any) {
+export function Home({route, navigation}: any) {
   const {isDarkTheme} = React.useContext(AuthContext);
   const image = isDarkTheme
     ? require('../../assets/images/bg-light.jpg')
     : require('../../assets/images/bg-light.jpg');
+
+  // navigation.reset({
+  //   index: 0,
+  // });
+  const name = route.params?.name;
+
   return (
     <ImageBackground style={sharedCss.bgImage} source={image}>
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text style={sharedCss.heading}>Home!</Text>
+        <Text style={sharedCss.heading}>{name}</Text>
         <Button title="7 Days" onPress={() => navigation.navigate('7Day')} />
         <Button
           title="12 Hours"
