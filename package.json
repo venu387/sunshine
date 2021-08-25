@@ -8,6 +8,7 @@
     "app:android": "lerna run android --scope @sunshine/app",
     "app:ios": "lerna run ios --scope @sunshine/app",
     "api:start": "lerna run start --scope @sunshine/api",
+    "api:build": "lerna run build --scope @sunshine/api",
     "android": "npm run android-dev",
     "android-dev": "concurrently \"npm run api:start\" \"npm run app:android\"",
     "ios": "npm run app:ios & npm run api:start",
