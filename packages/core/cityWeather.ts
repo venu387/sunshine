@@ -5,19 +5,44 @@ export class CityWeather {
   id: number = 0;
   cityDetails?: CityDetails;
   weatherData?: WeatherData;
-  main?: Main;
-  visibility: number = 0;
   wind?: Wind;
   rain?: Rain;
   snow?: Snow;
   clouds: number = 0;
   date?: Date;
-  timezone: number = 0;
-  cityId: number = 0;
+  timezone?: Date;
   name: string = "";
+  twelveHour: TwelveHourData | undefined;
+  sevenDay: SevenDayData | undefined;
 }
 
-export class CityDetails {
+class TwelveHourData {
+  constructor(props: Partial<TwelveHourData>) {
+    Object.assign(this, props);
+  }
+  hours: HourData[] | undefined;
+}
+
+class HourData {
+  constructor(props: Partial<HourData>) {
+    Object.assign(this, props);
+  }
+}
+
+class SevenDayData {
+  constructor(props: Partial<SevenDayData>) {
+    Object.assign(this, props);
+  }
+  days: DayData[] | undefined;
+}
+
+class DayData {
+  constructor(props: Partial<DayData>) {
+    Object.assign(this, props);
+  }
+}
+
+class CityDetails {
   constructor(props: Partial<CityDetails>) {
     Object.assign(this, props);
   }
@@ -32,34 +57,31 @@ export class CityDetails {
   sunset?: Date;
 }
 
-export class WeatherData {
+class WeatherData {
   constructor(props: Partial<WeatherData>) {
     Object.assign(this, props);
   }
-  main: string = "";
-  description: string = "";
-  iconName: string = "";
   temp: number = 0;
-  feelsLike: number = 0;
-  tempMin: number = 0;
-  tempMax: number = 0;
+  feels_like: number = 0;
   pressure: number = 0;
   humidity: number = 0;
+  temp_min: number = 0;
+  temp_max: number = 0;
+  sea_level: number = 0;
+  grnd_level: number = 0;
+  state?: IconAndDescription;
 }
 
-export class Main {
-  constructor(props: Partial<Main>) {
+class IconAndDescription {
+  constructor(props: Partial<IconAndDescription>) {
     Object.assign(this, props);
   }
-  temp: number = 0;
-  feelsLike: number = 0;
-  tempMin: number = 0;
-  tempMax: number = 0;
-  pressure: number = 0;
-  humidity: number = 0;
+  heading: string = "";
+  weatherDescription: string = "";
+  sunshineIconName: string = "";
 }
 
-export class Wind {
+class Wind {
   constructor(props: Partial<Wind>) {
     Object.assign(this, props);
   }
@@ -68,7 +90,7 @@ export class Wind {
   gust: number = 0;
 }
 
-export class Rain {
+class Rain {
   constructor(props: Partial<Rain>) {
     Object.assign(this, props);
   }
@@ -76,7 +98,7 @@ export class Rain {
   threeHour: number = 0;
 }
 
-export class Snow {
+class Snow {
   constructor(props: Partial<Snow>) {
     Object.assign(this, props);
   }

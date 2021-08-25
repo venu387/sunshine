@@ -1,8 +1,8 @@
 import { OpenApiUrlProvider } from "../config";
 import axios from "axios";
 import { Error } from "../types/errors";
-import { OpenWeather } from "../types/openWeather";
-import { CityWeather } from "@sunshine/core/cityWeather";
+import { OpenWeather } from "../types/openApi/openWeatherResponse";
+import * as Mapper from "../types/mapper";
 
 async function getResponse(url: string): Promise<any> {
   // axios call
@@ -24,19 +24,7 @@ const getWeatherByCityId = async (cityId: string) => {
   const url = OpenApiUrlProvider.GetCurrentWeatherByCityId(cityId);
 
   var data = (await getResponse(url)) as OpenWeather;
-  return new CityWeather({
-    cityDetails: {
-      country: data.sys?.country!,
-      lat: data.coord?.lat!,
-      lon: data.coord?.lon!,
-      id: data.sys?.id!,
-      name: data.name,
-      stateCode: "",
-      type: data.sys?.type!,
-      sunrise: new Date(data.sys?.sunrise!),
-      sunset: new Date(data.sys?.sunset!),
-    },
-  });
+  return Mapper.mapOpenWeatherToSunshineWeather(data);
 };
 
 const getWeatherByCityName = async (cityDetails: string) => {
@@ -45,7 +33,27 @@ const getWeatherByCityName = async (cityDetails: string) => {
    */
   const url =
     OpenApiUrlProvider.GetCurrentWeatherByCityNameAndCountry(cityDetails);
-  return (await getResponse(url)) as OpenWeather;
+  var data = (await getResponse(url)) as OpenWeather;
+  return Mapper.mapOpenWeatherToSunshineWeather(data);
+};
+
+const get12HourForecast = async (cityId: string) => {
+  var cityCurrentWeather = await getWeatherByCityId(cityId);
+  if (
+    cityCurrentWeather?.id &&
+    cityCurrentWeather?.cityDetails?.lat &&
+    cityCurrentWeather?.cityDetails?.lon
+  ) {
+    const oneCallResponse = await getAllByLonLat(
+      cityCurrentWeather?.cityDetails?.lon.toString(),
+      cityCurrentWeather?.cityDetails?.lat.toString()
+    );
+    cityCurrentWeather = Mapper.mapOneCallApiResponseToTwelveHourData(
+      oneCallResponse,
+      cityCurrentWeather
+    );
+    return cityCurrentWeather;
+  }
 };
 
 const getAllByLonLat = async (lon: string, lat: string) => {
@@ -56,4 +64,4 @@ const getAllByLonLat = async (lon: string, lat: string) => {
   return await getResponse(url);
 };
 
-export { getWeatherByCityId, getWeatherByCityName, getAllByLonLat };
+export { getWeatherByCityId, getWeatherByCityName, get12HourForecast };
