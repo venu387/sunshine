@@ -12,37 +12,102 @@ export class CityWeather {
   date?: Date;
   timezone?: Date;
   name: string = "";
-  twelveHour: TwelveHourData | undefined;
-  sevenDay: SevenDayData | undefined;
+  twelveHourData: TwelveHourData | undefined;
+  sevenDayData: SevenDayData | undefined;
+  alerts?: CityAlerts[] | undefined;
 }
 
-class TwelveHourData {
+export class CityAlerts {
+  constructor(props: Partial<CityAlerts>) {
+    Object.assign(this, props);
+  }
+  sender_name: string = "";
+  event: string = "";
+  start: number = 0;
+  end: number = 0;
+  description: string = "";
+  tags?: string[] | undefined;
+}
+
+export class TwelveHourData {
   constructor(props: Partial<TwelveHourData>) {
     Object.assign(this, props);
   }
   hours: HourData[] | undefined;
 }
 
-class HourData {
+export class HourData {
   constructor(props: Partial<HourData>) {
     Object.assign(this, props);
   }
+  dt: number = 0;
+  temp: number = 0;
+  feels_like: number = 0;
+  pressure: number = 0;
+  humidity: number = 0;
+  dew_point: number = 0;
+  uvi: number = 0;
+  clouds: number = 0;
+  visibility: number = 0;
+  wind_speed: number = 0;
+  wind_deg: number = 0;
+  wind_gust: number = 0;
+  pop: number = 0;
+  rain: number = 0;
+  snow: number = 0;
+  iconInfo?: IconAndDescription | undefined;
 }
 
-class SevenDayData {
+export class SevenDayData {
   constructor(props: Partial<SevenDayData>) {
     Object.assign(this, props);
   }
   days: DayData[] | undefined;
 }
 
-class DayData {
+export class DayData {
   constructor(props: Partial<DayData>) {
     Object.assign(this, props);
   }
+  dt: number = 0;
+  sunrise: number = 0;
+  sunset: number = 0;
+  moonrise: number = 0;
+  moonset: number = 0;
+  moon_phase: number = 0;
+  temp: Temp | undefined;
+  feels_like: FeelsLike | undefined;
+  pressure: number = 0;
+  humidity: number = 0;
+  dew_point: number = 0;
+  wind_speed: number = 0;
+  wind_deg: number = 0;
+  wind_gust: number = 0;
+  iconInfo?: IconAndDescription | undefined;
+  clouds: number = 0;
+  pop: number = 0;
+  uvi: number = 0;
+  rain?: number = 0;
+  snow?: number = 0;
 }
 
-class CityDetails {
+export class Temp {
+  day: number = 0;
+  min: number = 0;
+  max: number = 0;
+  night: number = 0;
+  eve: number = 0;
+  morn: number = 0;
+}
+
+export class FeelsLike {
+  day: number = 0;
+  night: number = 0;
+  eve: number = 0;
+  morn: number = 0;
+}
+
+export class CityDetails {
   constructor(props: Partial<CityDetails>) {
     Object.assign(this, props);
   }
@@ -57,7 +122,7 @@ class CityDetails {
   sunset?: Date;
 }
 
-class WeatherData {
+export class WeatherData {
   constructor(props: Partial<WeatherData>) {
     Object.assign(this, props);
   }
@@ -72,7 +137,7 @@ class WeatherData {
   state?: IconAndDescription;
 }
 
-class IconAndDescription {
+export class IconAndDescription {
   constructor(props: Partial<IconAndDescription>) {
     Object.assign(this, props);
   }
@@ -81,7 +146,7 @@ class IconAndDescription {
   sunshineIconName: string = "";
 }
 
-class Wind {
+export class Wind {
   constructor(props: Partial<Wind>) {
     Object.assign(this, props);
   }
@@ -90,7 +155,7 @@ class Wind {
   gust: number = 0;
 }
 
-class Rain {
+export class Rain {
   constructor(props: Partial<Rain>) {
     Object.assign(this, props);
   }
@@ -98,7 +163,7 @@ class Rain {
   threeHour: number = 0;
 }
 
-class Snow {
+export class Snow {
   constructor(props: Partial<Snow>) {
     Object.assign(this, props);
   }

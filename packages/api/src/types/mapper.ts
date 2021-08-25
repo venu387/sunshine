@@ -1,6 +1,11 @@
-import { CityWeather } from "@sunshine/core/cityWeather";
-import { OpenOneCallResponse } from "./openApi/openOneCallResponse";
-import { OpenWeather } from "./openApi/openWeatherResponse";
+import {
+  CityWeather,
+  DayData,
+  HourData,
+  IconAndDescription,
+} from "@sunshine/core/city-weather";
+import { OpenOneCallResponse } from "./openApi/open-one-call-response";
+import { OpenWeather } from "./openApi/open-weather-response";
 
 function mapOpenWeatherToSunshineWeather(source: OpenWeather) {
   return new CityWeather({
@@ -49,10 +54,54 @@ function mapOneCallApiResponseToTwelveHourData(
   source: OpenOneCallResponse,
   destination: CityWeather
 ) {
-  return destination;
+  return new CityWeather({
+    ...destination,
+    twelveHourData: {
+      hours: source.hourly?.slice(0, 12).map((h) => {
+        return new HourData({
+          ...h,
+          rain: h.rain?.["1h"],
+          snow: h.snow?.["1h"],
+          iconInfo: new IconAndDescription({
+            weatherDescription: h.weather?.[0].description,
+            heading: h.weather?.[0].main,
+            sunshineIconName: h.weather?.[0].icon,
+          }),
+        });
+      }),
+    },
+    alerts: source.alerts?.map((a) => {
+      return { ...a };
+    }),
+  });
+}
+
+function mapOneCallApiResponseToSevenDayData(
+  source: OpenOneCallResponse,
+  destination: CityWeather
+) {
+  return new CityWeather({
+    ...destination,
+    sevenDayData: {
+      days: source.daily?.slice(0, 6).map((d) => {
+        return new DayData({
+          ...d,
+          iconInfo: new IconAndDescription({
+            weatherDescription: d.weather?.[0].description,
+            heading: d.weather?.[0].main,
+            sunshineIconName: d.weather?.[0].icon,
+          }),
+        });
+      }),
+    },
+    alerts: source.alerts?.map((a) => {
+      return { ...a };
+    }),
+  });
 }
 
 export {
   mapOpenWeatherToSunshineWeather,
   mapOneCallApiResponseToTwelveHourData,
+  mapOneCallApiResponseToSevenDayData,
 };

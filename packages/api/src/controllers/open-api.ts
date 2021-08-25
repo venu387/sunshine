@@ -1,7 +1,7 @@
 import { OpenApiUrlProvider } from "../config";
 import axios from "axios";
 import { Error } from "../types/errors";
-import { OpenWeather } from "../types/openApi/openWeatherResponse";
+import { OpenWeather } from "../types/openApi/open-weather-response";
 import * as Mapper from "../types/mapper";
 
 async function getResponse(url: string): Promise<any> {
@@ -56,6 +56,25 @@ const get12HourForecast = async (cityId: string) => {
   }
 };
 
+const get7DayForecast = async (cityId: string) => {
+  var cityCurrentWeather = await getWeatherByCityId(cityId);
+  if (
+    cityCurrentWeather?.id &&
+    cityCurrentWeather?.cityDetails?.lat &&
+    cityCurrentWeather?.cityDetails?.lon
+  ) {
+    const oneCallResponse = await getAllByLonLat(
+      cityCurrentWeather?.cityDetails?.lon.toString(),
+      cityCurrentWeather?.cityDetails?.lat.toString()
+    );
+    cityCurrentWeather = Mapper.mapOneCallApiResponseToSevenDayData(
+      oneCallResponse,
+      cityCurrentWeather
+    );
+    return cityCurrentWeather;
+  }
+};
+
 const getAllByLonLat = async (lon: string, lat: string) => {
   /**
    * Get 48-hour and 7 day weather data for lat and lon from OpenWeather API
@@ -64,4 +83,9 @@ const getAllByLonLat = async (lon: string, lat: string) => {
   return await getResponse(url);
 };
 
-export { getWeatherByCityId, getWeatherByCityName, get12HourForecast };
+export {
+  getWeatherByCityId,
+  getWeatherByCityName,
+  get12HourForecast,
+  get7DayForecast,
+};
