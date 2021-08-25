@@ -5,6 +5,8 @@
   "scripts": {},
   "author": "Venu S Reddy",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
   "devDependencies": {}
 }

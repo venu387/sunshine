@@ -1,6 +1,6 @@
 import { OpenApiUrlProvider } from "../config";
 import axios from "axios";
-import { Error } from "../types/errors";
+import { Error } from "@sunshine/core/errors";
 import { OpenWeather } from "../types/openApi/open-weather-response";
 import * as Mapper from "../types/mapper";
 
