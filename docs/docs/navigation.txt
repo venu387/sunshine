@@ -1,0 +1,26 @@
+// Defines navigations in the app
+
+DrawerNavigation : {
+    Location1 => HomeScreen(1)
+    Location2 => HomeScreen(2)
+    ...
+    Add Location => AddLocationScreen
+    LogIn => AccountScreen
+    LogOut => [AuthContext].LogOut()
+}
+TabNavigation : {
+    HomeScreen : {
+        Stack: {
+            12HourScreen
+            7DayScreen
+        }
+    }
+    MyLocationsScreen : {
+        Stack : {
+            (LocationClick) => HomeLocation(ID)
+            AddLocationScreen
+        }
+    }
+    SettingsScreen
+    AccountScreen
+}

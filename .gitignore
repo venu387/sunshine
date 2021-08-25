@@ -1,6 +1,13 @@
+# build
+dist/
+
 # OSX
 #
 .DS_Store
+
+# VSCode
+
+.vscode/
 
 # Xcode
 #
