@@ -17,11 +17,11 @@ function mapOpenWeatherToSunshineWeather(source: OpenWeather) {
       name: source.name,
       stateCode: "",
       type: source.sys?.type!,
-      sunrise: new Date(source.sys?.sunrise!),
-      sunset: new Date(source.sys?.sunset!),
+      sunrise: new Date(source.sys?.sunrise! * 1000), // unix -> date
+      sunset: new Date(source.sys?.sunset! * 1000),
     },
     clouds: source.clouds?.all,
-    date: new Date(source.dt),
+    date: new Date(source.dt * 1000),
     id: source.id,
     name: source.name,
     rain: { oneHour: source.rain?.["1h"]!, threeHour: source.rain?.["3h"]! },
@@ -31,7 +31,7 @@ function mapOpenWeatherToSunshineWeather(source: OpenWeather) {
       gust: source.wind?.gust!,
       speed: source.wind?.speed!,
     },
-    timezone: new Date(source.timezone),
+    timezone: new Date(source.timezone * 1000),
     weatherData: {
       feels_like: source.main?.feels_like!,
       grnd_level: source.main?.grnd_level!,
@@ -41,6 +41,7 @@ function mapOpenWeatherToSunshineWeather(source: OpenWeather) {
       temp: source.main?.temp!,
       temp_max: source.main?.temp_max!,
       temp_min: source.main?.temp_min!,
+      visibility: source.visibility! / 1000, // m -> km
       state: {
         sunshineIconName: source.weather?.[0].icon!,
         weatherDescription: source.weather?.[0].description!,

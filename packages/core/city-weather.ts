@@ -134,6 +134,7 @@ export class WeatherData {
   temp_max: number = 0;
   sea_level: number = 0;
   grnd_level: number = 0;
+  visibility: number = 0;
   state?: IconAndDescription;
 }
 

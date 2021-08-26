@@ -4,6 +4,7 @@ export class OpenWeather extends Serializable {
   coord: Coord | undefined;
   weather?: WeatherEntity[] | null;
   base: string = "";
+  visibility: number = 0;
   main: Main | undefined;
   wind: Wind | undefined;
   clouds: Clouds | undefined;
