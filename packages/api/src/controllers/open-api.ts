@@ -3,6 +3,7 @@ import axios from "axios";
 import { Error } from "@sunshine/core/errors";
 import { OpenWeather } from "../types/openApi/open-weather-response";
 import * as Mapper from "../types/mapper";
+import { OpenOneCallResponse } from "../types/openApi/open-one-call-response";
 
 async function getResponse(url: string): Promise<any> {
   // axios call
@@ -37,7 +38,7 @@ const getWeatherByCityName = async (cityDetails: string) => {
   return Mapper.mapOpenWeatherToSunshineWeather(data);
 };
 
-const get12HourForecast = async (cityId: string) => {
+const get12HourAnd7DayForecast = async (cityId: string) => {
   var cityCurrentWeather = await getWeatherByCityId(cityId);
   if (
     cityCurrentWeather?.id &&
@@ -45,10 +46,10 @@ const get12HourForecast = async (cityId: string) => {
     cityCurrentWeather?.cityDetails?.lon
   ) {
     const oneCallResponse = await getAllByLonLat(
-      cityCurrentWeather?.cityDetails?.lon.toString(),
-      cityCurrentWeather?.cityDetails?.lat.toString()
+      cityCurrentWeather?.cityDetails?.lat.toString(),
+      cityCurrentWeather?.cityDetails?.lon.toString()
     );
-    cityCurrentWeather = Mapper.mapOneCallApiResponseToTwelveHourData(
+    cityCurrentWeather = Mapper.mapOneCallApiResponseToFutureForecastData(
       oneCallResponse,
       cityCurrentWeather
     );
@@ -56,36 +57,13 @@ const get12HourForecast = async (cityId: string) => {
   }
 };
 
-const get7DayForecast = async (cityId: string) => {
-  var cityCurrentWeather = await getWeatherByCityId(cityId);
-  if (
-    cityCurrentWeather?.id &&
-    cityCurrentWeather?.cityDetails?.lat &&
-    cityCurrentWeather?.cityDetails?.lon
-  ) {
-    const oneCallResponse = await getAllByLonLat(
-      cityCurrentWeather?.cityDetails?.lon.toString(),
-      cityCurrentWeather?.cityDetails?.lat.toString()
-    );
-    cityCurrentWeather = Mapper.mapOneCallApiResponseToSevenDayData(
-      oneCallResponse,
-      cityCurrentWeather
-    );
-    return cityCurrentWeather;
-  }
-};
-
-const getAllByLonLat = async (lon: string, lat: string) => {
+const getAllByLonLat = async (lat: string, lon: string) => {
   /**
    * Get 48-hour and 7 day weather data for lat and lon from OpenWeather API
    */
-  const url = OpenApiUrlProvider.GetForecastWeatherByCoordinates(lon, lat);
-  return await getResponse(url);
+  const url = OpenApiUrlProvider.GetForecastWeatherByCoordinates(lat, lon);
+  const data = await getResponse(url);
+  return data as OpenOneCallResponse;
 };
 
-export {
-  getWeatherByCityId,
-  getWeatherByCityName,
-  get12HourForecast,
-  get7DayForecast,
-};
+export { getWeatherByCityId, getWeatherByCityName, get12HourAnd7DayForecast };

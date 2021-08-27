@@ -13,7 +13,7 @@ function mapOpenWeatherToSunshineWeather(source: OpenWeather) {
       country: source.sys?.country!,
       lat: source.coord?.lat!,
       lon: source.coord?.lon!,
-      id: source.sys?.id!,
+      id: source.id,
       name: source.name,
       stateCode: "",
       type: source.sys?.type!,
@@ -51,7 +51,7 @@ function mapOpenWeatherToSunshineWeather(source: OpenWeather) {
   });
 }
 
-function mapOneCallApiResponseToTwelveHourData(
+function mapOneCallApiResponseToFutureForecastData(
   source: OpenOneCallResponse,
   destination: CityWeather
 ) {
@@ -61,6 +61,7 @@ function mapOneCallApiResponseToTwelveHourData(
       hours: source.hourly?.slice(0, 12).map((h) => {
         return new HourData({
           ...h,
+          date: new Date(h.dt * 1000),
           rain: h.rain?.["1h"],
           snow: h.snow?.["1h"],
           iconInfo: new IconAndDescription({
@@ -71,22 +72,15 @@ function mapOneCallApiResponseToTwelveHourData(
         });
       }),
     },
-    alerts: source.alerts?.map((a) => {
-      return { ...a };
-    }),
-  });
-}
-
-function mapOneCallApiResponseToSevenDayData(
-  source: OpenOneCallResponse,
-  destination: CityWeather
-) {
-  return new CityWeather({
-    ...destination,
     sevenDayData: {
-      days: source.daily?.slice(0, 6).map((d) => {
+      days: source.daily?.slice(1, 8).map((d) => {
         return new DayData({
           ...d,
+          sunrise: new Date(d.sunrise * 1000),
+          sunset: new Date(d.sunset * 1000),
+          moonrise: new Date(d.moonrise * 1000),
+          moonset: new Date(d.moonset * 1000),
+          date: new Date(d.dt * 1000),
           iconInfo: new IconAndDescription({
             weatherDescription: d.weather?.[0].description,
             heading: d.weather?.[0].main,
@@ -103,6 +97,5 @@ function mapOneCallApiResponseToSevenDayData(
 
 export {
   mapOpenWeatherToSunshineWeather,
-  mapOneCallApiResponseToTwelveHourData,
-  mapOneCallApiResponseToSevenDayData,
+  mapOneCallApiResponseToFutureForecastData,
 };

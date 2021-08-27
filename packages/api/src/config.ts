@@ -38,7 +38,7 @@ function getOpenWeatherApiUrl(data: any) {
 }
 
 function getOneCallApiUrl(data: any) {
-  var url = new URL(openApiUrl.href);
+  var url = new URL(oneCallApiUrl.href);
   for (let d in data) {
     url.searchParams.append(d, data[d]);
   }

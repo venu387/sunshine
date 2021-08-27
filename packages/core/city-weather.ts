@@ -40,7 +40,7 @@ export class HourData {
   constructor(props: Partial<HourData>) {
     Object.assign(this, props);
   }
-  dt: number = 0;
+  date: Date | undefined;
   temp: number = 0;
   feels_like: number = 0;
   pressure: number = 0;
@@ -69,11 +69,11 @@ export class DayData {
   constructor(props: Partial<DayData>) {
     Object.assign(this, props);
   }
-  dt: number = 0;
-  sunrise: number = 0;
-  sunset: number = 0;
-  moonrise: number = 0;
-  moonset: number = 0;
+  date: Date | undefined;
+  sunrise: Date | undefined;
+  sunset: Date | undefined;
+  moonrise: Date | undefined;
+  moonset: Date | undefined;
   moon_phase: number = 0;
   temp: Temp | undefined;
   feels_like: FeelsLike | undefined;
