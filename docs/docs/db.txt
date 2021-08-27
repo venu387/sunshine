@@ -1,0 +1,21 @@
+Cloud Database (Firebase) : {
+    Users: [{
+        first_name: "first",
+        last_name: "last"
+        email: "someone@email.com",
+        password: "<hashed_password>",
+        one_time_password: 123456,
+        otp_expiry: 16845662312 (unix)
+        settings: {
+            unit: default | metric | imperial
+            enable12Hour: boolean
+            enable7Day: boolean
+        },
+        locations: [
+            {CurrentCityWeather},
+            {CityWeather1},
+            {CityWeather2},
+            {CityWeather3},
+        ]
+    }]
+}
