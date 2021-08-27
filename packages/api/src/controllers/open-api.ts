@@ -38,8 +38,8 @@ const getWeatherByCityName = async (cityDetails: string) => {
   return Mapper.mapOpenWeatherToSunshineWeather(data);
 };
 
-const get12HourAnd7DayForecast = async (cityId: string) => {
-  var cityCurrentWeather = await getWeatherByCityId(cityId);
+const getCityWeatherForecast = async (cityDetails: string) => {
+  var cityCurrentWeather = await getWeatherByCityName(cityDetails);
   if (
     cityCurrentWeather?.id &&
     cityCurrentWeather?.cityDetails?.lat &&
@@ -66,4 +66,4 @@ const getAllByLonLat = async (lat: string, lon: string) => {
   return data as OpenOneCallResponse;
 };
 
-export { getWeatherByCityId, getWeatherByCityName, get12HourAnd7DayForecast };
+export { getCityWeatherForecast };

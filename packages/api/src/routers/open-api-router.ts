@@ -19,7 +19,7 @@ openApiRouter.get(
 openApiRouter.get(
   "/:cityDetails",
   async function (req: Request, res: Response, next: NextFunction) {
-    const response = await OpenApi.get12HourAnd7DayForecast(
+    const response = await OpenApi.getCityWeatherForecast(
       req.params.cityDetails
     );
     res.json(response);
