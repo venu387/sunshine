@@ -3,9 +3,8 @@ import {
   DayData,
   HourData,
   IconAndDescription,
-} from "@sunshine/core/city-weather";
-import { OpenOneCallResponse } from "./openApi/open-one-call-response";
-import { OpenWeather } from "./openApi/open-weather-response";
+} from "@sunshine/core/types/city-weather";
+import { OpenWeather, OpenOneCallResponse } from "./models/open-api";
 
 function mapOpenWeatherToSunshineWeather(source: OpenWeather) {
   return new CityWeather({

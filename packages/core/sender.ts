@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Error } from "./errors";
+import { Error } from "./types/errors";
 
 export class AxiosSender {
   constructor() {}
@@ -10,8 +10,9 @@ export class AxiosSender {
         return response.data as T;
       })
       .catch((error: { message: any }) => {
-        console.log(error);
-        return new Error({ message: error.message });
+        // console.log(error);
+        const err = new Error({ message: error.message });
+        return { err } as unknown as T;
       });
   }
 }
