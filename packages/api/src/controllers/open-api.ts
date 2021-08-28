@@ -1,8 +1,7 @@
 import { OpenApiUrlProvider } from "../config";
 import { AxiosSender } from "@sunshine/core/sender";
-import { OpenWeather } from "@sunshine/core/types/external/open-weather-response";
-import * as Mapper from "@sunshine/core/mapper";
-import { OpenOneCallResponse } from "@sunshine/core/types/external/open-one-call-response";
+import { OpenWeather, OpenOneCallResponse } from "../models/open-api";
+import * as Mapper from "../mapper";
 
 const sender = new AxiosSender();
 
