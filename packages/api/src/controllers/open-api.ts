@@ -1,22 +1,10 @@
 import { OpenApiUrlProvider } from "../config";
-import axios from "axios";
-import { Error } from "@sunshine/core/errors";
-import { OpenWeather } from "../types/openApi/open-weather-response";
-import * as Mapper from "../types/mapper";
-import { OpenOneCallResponse } from "../types/openApi/open-one-call-response";
+import { AxiosSender } from "@sunshine/core/sender";
+import { OpenWeather } from "@sunshine/core/types/external/open-weather-response";
+import * as Mapper from "@sunshine/core/mapper";
+import { OpenOneCallResponse } from "@sunshine/core/types/external/open-one-call-response";
 
-async function getResponse(url: string): Promise<any> {
-  // axios call
-  return await axios
-    .get(url)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-      return new Error({ message: error.message });
-    });
-}
+const sender = new AxiosSender();
 
 const getWeatherByCityId = async (cityId: string) => {
   /**
@@ -24,7 +12,7 @@ const getWeatherByCityId = async (cityId: string) => {
    */
   const url = OpenApiUrlProvider.GetCurrentWeatherByCityId(cityId);
 
-  var data = (await getResponse(url)) as OpenWeather;
+  var data = await sender.get<OpenWeather>(url);
   return Mapper.mapOpenWeatherToSunshineWeather(data);
 };
 
@@ -34,7 +22,7 @@ const getWeatherByCityName = async (cityDetails: string) => {
    */
   const url =
     OpenApiUrlProvider.GetCurrentWeatherByCityNameAndCountry(cityDetails);
-  var data = (await getResponse(url)) as OpenWeather;
+  var data = await sender.get<OpenWeather>(url);
   return Mapper.mapOpenWeatherToSunshineWeather(data);
 };
 
@@ -62,8 +50,8 @@ const getAllByLonLat = async (lat: string, lon: string) => {
    * Get 48-hour and 7 day weather data for lat and lon from OpenWeather API
    */
   const url = OpenApiUrlProvider.GetForecastWeatherByCoordinates(lat, lon);
-  const data = await getResponse(url);
-  return data as OpenOneCallResponse;
+  const data = await sender.get<OpenOneCallResponse>(url);
+  return data;
 };
 
 export { getCityWeatherForecast };
