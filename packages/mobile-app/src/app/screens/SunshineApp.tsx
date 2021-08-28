@@ -126,5 +126,4 @@ const App = () => {
     </PaperProvider>
   );
 };
-
 export default App;
