@@ -4,13 +4,10 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import {Provider as PaperProvider} from 'react-native-paper';
 
-import {DrawerContent} from './DrawerContent';
 import {AuthContext} from './Context';
 import AsyncStorage from '@react-native-community/async-storage';
 import {CustomDarkTheme, CustomDefaultTheme} from './ThemeProvider';
 import DrawerNavigator from '../navigation/DrawerNavigator';
-
-const Drawer = createDrawerNavigator();
 
 const App = () => {
   // const [isLoading, setIsLoading] = React.useState(true);
