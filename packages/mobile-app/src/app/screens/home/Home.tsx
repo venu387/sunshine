@@ -1,3 +1,4 @@
+import {useFocusEffect, CommonActions} from '@react-navigation/native';
 import React, {Component} from 'react';
 import {Alert, ImageBackground} from 'react-native';
 import {StyleSheet, Text, View} from 'react-native';
@@ -14,7 +15,24 @@ export function Home({route, navigation}: any) {
   // navigation.reset({
   //   index: 0,
   // });
-  const name = route.params?.name;
+  const name = route.params;
+
+  // navigation.dispatch(
+  //   CommonActions.reset({
+  //     index: 0,
+  //     routes: [{name: 'Home'}],
+  //   }),
+  // );
+  // useFocusEffect(
+  //   React.useCallback(() => {
+  //     // Do something when the screen is focused
+
+  //     return () => {
+  //       // Do something when the screen is unfocused
+  //       // Useful for cleanup functions
+  //     };
+  //   }, []),
+  // );
 
   return (
     <ImageBackground style={sharedCss.bgImage} source={image}>

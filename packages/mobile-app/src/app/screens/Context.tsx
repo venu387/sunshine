@@ -5,7 +5,7 @@ export const AuthContext = React.createContext({
   signOut: async () => {},
   signUp: () => {},
   toggleTheme: () => {},
-  isUserLoggedIn: () => {
+  isUserLoggedIn: async () => {
     return false;
   },
   // AppContext props

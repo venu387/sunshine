@@ -12,6 +12,7 @@ import Settings from '../screens/settings/Settings';
 import Account from '../screens/account/Account';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Alert, Button} from 'react-native';
+import Login from '../screens/account/Login';
 
 const HomeStack = createStackNavigator();
 const LocationsStack = createStackNavigator();
